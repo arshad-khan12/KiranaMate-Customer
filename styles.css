@@ -1,0 +1,64 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme {
+  --color-background: #F9F9F9;
+  --color-foreground: #111827;
+  --color-primary: #2E7D32;
+  --color-accent: #4CAF50;
+  --color-border: #E5E7EB;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html, body, #root {
+  height: 100%;
+  background: #E5E7EB;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: #111827;
+}
+
+/* Inputs always sit on light surfaces — keep typed text dark in both themes */
+input, textarea, select {
+  color: #111827;
+}
+input::placeholder, textarea::placeholder { color: #9CA3AF; }
+
+.app-shell {
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #F9F9F9;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0,0,0,0.05);
+}
+
+html.dark body { background: #05070a; color: #F3F4F6; }
+html.dark .app-shell { background: #0B0F0E; box-shadow: 0 0 30px rgba(0,0,0,0.4); }
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop 0.5s ease-out; }
+
+@keyframes scale-in {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-scale-in { animation: scale-in 0.2s ease-out; }
+
+@keyframes slide-in-up {
+  0% { transform: translateY(120%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-in-up { animation: slide-in-up 0.3s ease-out; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
